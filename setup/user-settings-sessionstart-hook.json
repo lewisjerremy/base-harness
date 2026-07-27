@@ -1,0 +1,15 @@
+{
+  "_comment": "Merge the hooks block below into ~/.claude/settings.json. It auto-links the shared skills into any checkout/worktree under your parent dir that is missing them. REPLACE the absolute path with your own parent directory.",
+  "hooks": {
+    "SessionStart": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "case \"$PWD\" in /Absolute/Path/To/Your/Parent/Dir/*) [ -e .claude/skills ] || /Absolute/Path/To/Your/Parent/Dir/base-harness/install.sh . >/dev/null 2>&1 || true ;; esac"
+          }
+        ]
+      }
+    ]
+  }
+}

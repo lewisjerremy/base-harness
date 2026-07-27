@@ -1,0 +1,27 @@
+{
+  "_comment": "Example Claude Code project settings (.claude/settings.local.json). Copy into a repo, trim the allowlist to what that repo actually needs, and remove anything you don't want auto-approved. The PostToolUse hook is optional — shown as a pattern for auto-running lint/format after edits.",
+  "permissions": {
+    "allow": [
+      "Bash(git *)",
+      "Bash(gh *)",
+      "Bash(npm *)",
+      "Bash(npx *)",
+      "Bash(node *)",
+      "Bash(find *)",
+      "Bash(grep *)"
+    ]
+  },
+  "hooks": {
+    "PostToolUse": [
+      {
+        "matcher": "Edit|Write",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "# echo 'optional: run your linter/formatter here'"
+          }
+        ]
+      }
+    ]
+  }
+}
