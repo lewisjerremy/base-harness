@@ -1,0 +1,5 @@
+{
+  "_comment": "pi project settings, synced into each checkout as .pi/settings.json by sync.sh. pi has no permissions.allow concept (permissions live in extensions, not settings), so this is intentionally minimal: pin the skills path explicitly and enable /skill:name commands. See agents/pi/README.md.",
+  "skills": ["../.agents/skills"],
+  "enableSkillCommands": true
+}

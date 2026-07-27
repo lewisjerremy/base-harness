@@ -1,0 +1,15 @@
+{
+  "_comment": "Merge the hooks block into ~/.claude/settings.json. On Claude Code SessionStart, if the cwd is under your parent dir and the shared links are missing, run base-harness/sync.sh to fan context/skills/settings into the checkout. REPLACE the absolute path with your parent directory (the dir holding both base-harness and your repos).",
+  "hooks": {
+    "SessionStart": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "case \"$PWD\" in /Absolute/Path/To/Your/Parent/Dir/*) [ -e .agents/skills ] || /Absolute/Path/To/Your/Parent/Dir/base-harness/sync.sh . >/dev/null 2>&1 || true ;; esac"
+          }
+        ]
+      }
+    ]
+  }
+}

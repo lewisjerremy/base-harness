@@ -10,9 +10,9 @@ skills/
     └── references/
 ```
 
-`install.sh` links this whole `skills/` directory into each checkout/worktree as
+`sync.sh` links this whole `skills/` directory into each checkout/worktree as
 `.claude/skills` and `.agents/skills` (relative symlinks, so they resolve on the
-host and inside devcontainers). Both Claude Code and Codex discover skills from
-those locations.
+host and inside devcontainers). Claude Code, Codex, and pi all discover skills
+from those locations (`.agents/skills` covers Codex **and** pi).
 
 This folder is empty by design — the harness ships with no skills. Add your own.

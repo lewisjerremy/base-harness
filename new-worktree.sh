@@ -38,5 +38,5 @@ printf 'gitdir: %s\n' "$(relpath "$GITDIR" "$WT")" > "$WT/.git"
 printf '%s\n' "$(relpath "$WT/.git" "$GITDIR")" > "$GITDIR/gitdir"
 git -C "$WT" status --porcelain >/dev/null   # sanity check the rewrite
 
-"$HERE/install.sh" "$WT"
+"$HERE/sync.sh" "$WT"
 echo "worktree ready: $WT (branch $BRANCH, base $BASE)"
