@@ -75,7 +75,10 @@ remove-worktree.sh  remove a worktree made by new-worktree.sh
 
 context/CLAUDE.md   shared rules; AGENTS.md is a symlink to it (Claude+Codex+pi)
 context/<repo>.md   optional per-repo conventions (see example-repo.md)
-skills/             your agent skills — one folder per skill, each with SKILL.md
+skills/             your agent skills — one folder per skill, each with SKILL.md. Empty by
+                    design (the harness ships none). Add your own: `skills/<name>/SKILL.md`.
+                    Do NOT put a loose `README.md` here — agents (pi) validate every root
+                    `.md` as a skill and reject it for missing frontmatter.
 agents/             per-checkout adapter files, one folder per agent (the map)
 setup/              one-time USER-GLOBAL installers per agent (auto-sync hooks)
 
