@@ -8,11 +8,14 @@
 
 ## Why this exists
 
-<!-- One paragraph: what the project is and what the harness optimizes for
-     (e.g. "queue review-ready work in front of the maintainer and never spend
-     their attention on something a machine could handle"). The harness's job is
-     rarely to maximize throughput — it's to protect what matters (production,
-     correctness, the maintainer's attention). -->
+LewisOS is a family of real businesses (farm, finance, direct-to-consumer
+commerce) run by a **single maintainer** using many concurrent agent sessions.
+The harness's job is not to maximize throughput — it's to protect what matters
+(production, customer data, money, and the maintainer's scarce attention): queue
+review-ready work in front of the maintainer and never spend their attention on
+something a machine could handle. Jerremy is the sole reviewer, so the
+self-review gate (a *different* session reviews each draft before it reaches
+"ready") is what keeps the maintainer's pass from being the first.
 
 ## The autonomy ladder
 
@@ -66,8 +69,9 @@ multi-window setup this is natural: the window that builds surfaces the draft as
 
 - Releases are manual and never automated. The harness may **draft** a release PR
   and produce the smoke-test checklist; it never executes.
-- Timing constraints: <!-- e.g. no Friday releases; no release within N days of
-     a launch/event. -->
+- Timing constraints: no Friday/weekend releases; no release within 48 hours of
+  a launch or live event (e.g. an open order batch for BarL4). Pause and confirm
+  with the owner outside these windows.
 
 ## How state is shared across sessions
 
@@ -90,9 +94,16 @@ transitions are infrequent, so contention is rare.
 
 ## Model policy
 
-<!-- TEMPLATE: Name your default workhorse model and when to escalate to a
-     stronger one for the heaviest judgment calls (final review of critical
-     diffs, release go/no-go). -->
+<!-- Calibrate to the models you actually run in pi. Defaults below are a
+     starting point — replace the names with your preferred workhorse + escalation
+     model once chosen. -->
+
+- **Default workhorse:** the model configured as pi's default. Fine for building,
+  tests, and routine review prep.
+- **Escalate** to a stronger model for: the final review of a diff touching
+  money/auth/customer data, release go/no-go, and scoping a genuinely ambiguous
+  ticket. The conductor session that runs the review gate is the natural place to
+  spend the stronger model.
 
 ## How to change a decision
 
